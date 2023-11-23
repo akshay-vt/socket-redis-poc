@@ -10,6 +10,9 @@ const REDIS_URL = process.env.REDIS_URL || "redis://eduployment-prod.i5fb0j.ng.0
 const pubClient = createClient({ url: REDIS_URL });
 const subClient = pubClient.duplicate();
 
+pubClient.GET('name').then(val=>console.log('pubClient:: ',val))
+subClient.GET('name').then(val=>console.log('subClient:: ',val))
+
 io.adapter(createAdapter(pubClient, subClient));
 
 io.use(function (socket, next) {
