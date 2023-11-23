@@ -30,10 +30,10 @@ io.on("connection", (socket) => {
         console.log('Recieve message : ', JSON.stringify(data),  ' ',socket.id)
         let targetClientId = data.toId
         console.log('targetClientId: ',targetClientId)
-        console.log('Socket id is conencted : ', !!io.sockets.sockets.get(targetClientId))
-        if (!!io.sockets.sockets.get(targetClientId)) {
-            io.to(targetClientId).emit("client:message", "Message is sent by: " + socket.id);
-        }
+        console.log('Socket id is not conencted here : ', !!io.sockets.sockets.get(targetClientId))
+        // if (!!io.sockets.sockets.get(targetClientId)) {
+        // }
+        io.to(targetClientId).emit("client:message", "Message is sent by: " + socket.id);
     });
 });
 
